@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  app:                          # Name of your service
+    platform: linux/amd64
+    build:
+      context: ..               # Can access parent directory
+      dockerfile: ./yoruba-adr/Dockerfile
+    volumes:
+      - .:/app                  # Mount current directory to /app
+    environment:
+      - PYTHONUNBUFFERED=1      # Makes Python print output immediately
+    stdin_open: true            # Equivalent to -i
+    tty: true                   # Equivalent to -t
