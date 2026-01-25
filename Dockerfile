@@ -18,8 +18,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy yoruba-adr
 COPY . ./yoruba-adr
 
-# Copy yoruba-text
-COPY . ./yoruba-text
+# Copy yoruba-text (but only the thesis part)
+COPY . ./yoruba-text-thesis
 
 # Command to run with 'docker run' command
 CMD ["bash", "./yoruba-adr/01_run_training.sh"]

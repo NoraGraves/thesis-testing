@@ -41,112 +41,152 @@ SOURCE_FILE_DEV="${OUTPUT_DIR_DEV}/dev.txt"
 SOURCE_FILE_TEST="${OUTPUT_DIR_TEST}/test.txt"
 
 ###############################################################################################################
-### FOR LagosNWUspeech_corpus: 4315 lines => 80/10/10 split => train/dev/test => 3452/431/432
+# ADDED FOR THESIS
+###############################################################################################################
+
+###############################################################################################################
+### FOR IroyinSpeechCorpus: 4315 lines => 90/0/10 split => train/dev/test => 7979/0/887
 echo ""
-echo "Using [LagosNWUspeech] SOURCE FILE TRAIN=${SOURCE_FILE_TRAIN}"
-head -n 3452 "${SOURCE_BASE_DIR}/LagosNWU/all_transcripts.txt" >>  ${SOURCE_FILE_TRAIN}
+echo "Using [IroyinSpeechCorpus] SOURCE FILE TRAIN=${SOURCE_FILE_TRAIN}"
+head -n 3452 "${SOURCE_BASE_DIR}/thesis/IroyinSpeechCorpus.txt" >>  ${SOURCE_FILE_TRAIN}
 
-echo "Using [LagosNWUspeech] SOURCE FILE TRAIN=${SOURCE_FILE_DEV}"
-tail -n 863 "${SOURCE_BASE_DIR}/LagosNWU/all_transcripts.txt" | head -n 431  >> ${SOURCE_FILE_DEV}
-
-echo "Using [LagosNWUspeech] SOURCE FILE TRAIN=${SOURCE_FILE_TEST}"
-tail -n 863 "${SOURCE_BASE_DIR}/LagosNWU/all_transcripts.txt" | tail -n 432  >> ${SOURCE_FILE_TEST}
+echo "Using [IroyinSpeechCorpus] SOURCE FILE TRAIN=${SOURCE_FILE_TEST}"
+tail -n 887 "${SOURCE_BASE_DIR}/thesis/IroyinSpeechCorpus.txt" | tail -n 887  >> ${SOURCE_FILE_TEST}
 echo "" >> ${SOURCE_FILE_TEST}
 
-
 ###############################################################################################################
-### FOR TheYorubaBlog_corpus: 4135 lines => 80/10/10 split => train/dev/test => 3308/413/414
+### FOR MultiDiacCorpus: 599 lines => 90/0/10 split => train/dev/test => 539/0/60
 echo ""
-echo "Using [TheYorubaBlog] SOURCE FILE TRAIN=${SOURCE_FILE_TRAIN}"
-head -n 3308 "${SOURCE_BASE_DIR}/TheYorubaBlog/theyorubablog_dot_com.txt" >>  ${SOURCE_FILE_TRAIN}
+echo "Using [MultiDiacCorpus] SOURCE FILE TRAIN=${SOURCE_FILE_TRAIN}"
+head -n 539 "${SOURCE_BASE_DIR}/thesis/MultiDiacCorpus.txt" >>  ${SOURCE_FILE_TRAIN}
 
-echo "Using [TheYorubaBlog] SOURCE FILE TRAIN=${SOURCE_FILE_DEV}"
-tail -n 827 "${SOURCE_BASE_DIR}/TheYorubaBlog/theyorubablog_dot_com.txt" | head -n 413  >> ${SOURCE_FILE_DEV}
+echo "Using [MultiDiacCorpus] SOURCE FILE TRAIN=${SOURCE_FILE_TEST}"
+tail -n 60 "${SOURCE_BASE_DIR}/thesis/MultiDiacCorpus.txt" | tail -n 60  >> ${SOURCE_FILE_TEST}
+echo "" >> ${SOURCE_FILE_TEST}
 
-echo "Using [TheYorubaBlog] SOURCE FILE TRAIN=${SOURCE_FILE_TEST}"
-tail -n 827 "${SOURCE_BASE_DIR}/TheYorubaBlog/theyorubablog_dot_com.txt" | tail -n 414  >> ${SOURCE_FILE_TEST}
+###############################################################################################################
+### FOR YADCorpus: 16195 lines => 90/0/10 split => train/dev/test => 14575/0/1620
+echo ""
+echo "Using [YADCorpus] SOURCE FILE TRAIN=${SOURCE_FILE_TRAIN}"
+head -n 14575 "${SOURCE_BASE_DIR}/thesis/YADCorpus.txt" >>  ${SOURCE_FILE_TRAIN}
+
+echo "Using [YADCorpus] SOURCE FILE TRAIN=${SOURCE_FILE_TEST}"
+tail -n 1620 "${SOURCE_BASE_DIR}/thesis/YADCorpus.txt" | tail -n 1620  >> ${SOURCE_FILE_TEST}
 echo "" >> ${SOURCE_FILE_TEST}
 
 
 ###############################################################################################################
-### FOR BibeliYoruba_corpus: 45713 lines => 80/10/10 split => train/dev/test => 36570/4570/4570
-echo "" 
-echo "Using [BibeliYoruba] SOURCE FILE TRAIN=${SOURCE_FILE_TRAIN}"
-head -n 36570 "${SOURCE_BASE_DIR}/Bibeli_Mimo/biblica.txt" >>  ${SOURCE_FILE_TRAIN}
-
-echo "Using [BibeliYoruba] SOURCE FILE TRAIN=${SOURCE_FILE_DEV}"
-tail -n 9143 "${SOURCE_BASE_DIR}/Bibeli_Mimo/biblica.txt" | head -n 4571  >> ${SOURCE_FILE_DEV}
-
-echo "Using [BibeliYoruba] SOURCE FILE TRAIN=${SOURCE_FILE_TEST}"
-tail -n 9143 "${SOURCE_BASE_DIR}/Bibeli_Mimo/biblica.txt" | tail -n 4571  >> ${SOURCE_FILE_TEST}
-echo "" >> ${SOURCE_FILE_TEST}
-
-
+# COMMENT OUT FOR THESIS
 ###############################################################################################################
-### FOR Iroyin (news): 1738 lines => 80/10/10 split => train/dev/test => 1371/171/171
-# echo "" 
-# echo "Using [Iroyin] SOURCE FILE TRAIN=${SOURCE_FILE_TRAIN}"
-# head -n 1371 "${SOURCE_BASE_DIR}/Iroyin/news_sites.txt" >>  ${SOURCE_FILE_TRAIN}
-# 
-# echo "Using [Iroyin] SOURCE FILE TRAIN=${SOURCE_FILE_DEV}"
-# tail -n 342 "${SOURCE_BASE_DIR}/Iroyin/news_sites.txt" | head -n 171  >> ${SOURCE_FILE_DEV}
-# 
-# echo "Using [Iroyin] SOURCE FILE TRAIN=${SOURCE_FILE_TEST}"
-# tail -n 342 "${SOURCE_BASE_DIR}/Iroyin/news_sites.txt" | tail -n 171  >> ${SOURCE_FILE_TEST}
+
+# ###############################################################################################################
+# ### FOR LagosNWUspeech_corpus: 4315 lines => 80/10/10 split => train/dev/test => 3452/431/432
+# echo ""
+# echo "Using [LagosNWUspeech] SOURCE FILE TRAIN=${SOURCE_FILE_TRAIN}"
+# head -n 3452 "${SOURCE_BASE_DIR}/LagosNWU/all_transcripts.txt" >>  ${SOURCE_FILE_TRAIN}
+
+# echo "Using [LagosNWUspeech] SOURCE FILE TRAIN=${SOURCE_FILE_DEV}"
+# tail -n 863 "${SOURCE_BASE_DIR}/LagosNWU/all_transcripts.txt" | head -n 431  >> ${SOURCE_FILE_DEV}
+
+# echo "Using [LagosNWUspeech] SOURCE FILE TRAIN=${SOURCE_FILE_TEST}"
+# tail -n 863 "${SOURCE_BASE_DIR}/LagosNWU/all_transcripts.txt" | tail -n 432  >> ${SOURCE_FILE_TEST}
 # echo "" >> ${SOURCE_FILE_TEST}
 
 
-############################################################################################################
-### FOR https://github.com/Toluwase/Word-Level-Language-Identification-for-Resource-Scarce-
-### A corpus for word-level language id research:  5324 lines => 80/10/10 => train/dev/test => 4258/533/533
+# ###############################################################################################################
+# ### FOR TheYorubaBlog_corpus: 4135 lines => 80/10/10 split => train/dev/test => 3308/413/414
+# echo ""
+# echo "Using [TheYorubaBlog] SOURCE FILE TRAIN=${SOURCE_FILE_TRAIN}"
+# head -n 3308 "${SOURCE_BASE_DIR}/TheYorubaBlog/theyorubablog_dot_com.txt" >>  ${SOURCE_FILE_TRAIN}
 
-SOURCE_BASE_DIR="${BASE_DIR}/../Word-Level-Language-Identification-for-Resource-Scarce-"
-echo ""
-echo "Changing to use SOURCE_TEXT_BASE_DIR=${SOURCE_BASE_DIR}"
+# echo "Using [TheYorubaBlog] SOURCE FILE TRAIN=${SOURCE_FILE_DEV}"
+# tail -n 827 "${SOURCE_BASE_DIR}/TheYorubaBlog/theyorubablog_dot_com.txt" | head -n 413  >> ${SOURCE_FILE_DEV}
 
-### Check if this repo exists, git clone it if it doesn't, for now assume it does ###
-if [ -d "${SOURCE_BASE_DIR}" ]
-then
-    # cat this repo's {training, test} files together {Yoruba_training_corpus(part).txt, EngYor_test_corpus.txt}
-    cat "${SOURCE_BASE_DIR}/Yoruba_training_corpus(part).txt" "${SOURCE_BASE_DIR}/EngYor_test_corpus.txt" > "${SOURCE_BASE_DIR}/combined_corpus.txt"
-
-    echo "Using [Tolúwaṣẹ word-level langid] SOURCE FILE TRAIN=${SOURCE_FILE_TRAIN}"
-    head -n 4258 "${SOURCE_BASE_DIR}/combined_corpus.txt" >>  ${SOURCE_FILE_TRAIN}
-
-    echo "Using [Tolúwaṣẹ word-level langid] SOURCE FILE TRAIN=${SOURCE_FILE_DEV}"
-    tail -n 1066 "${SOURCE_BASE_DIR}/combined_corpus.txt" | head -n 533  >> ${SOURCE_FILE_DEV}
-
-    echo "Using [Tolúwaṣẹ word-level langid] SOURCE FILE TRAIN=${SOURCE_FILE_TEST}"
-    tail -n 1066 "${SOURCE_BASE_DIR}/combined_corpus.txt" | tail -n 533  >> ${SOURCE_FILE_TEST}
-    echo "" >> ${SOURCE_FILE_TEST}
-    echo "Removing Tempfile ${SOURCE_BASE_DIR}/Yoruba_training_corpus(part).txt"
-fi
+# echo "Using [TheYorubaBlog] SOURCE FILE TRAIN=${SOURCE_FILE_TEST}"
+# tail -n 827 "${SOURCE_BASE_DIR}/TheYorubaBlog/theyorubablog_dot_com.txt" | tail -n 414  >> ${SOURCE_FILE_TEST}
+# echo "" >> ${SOURCE_FILE_TEST}
 
 
-############################################################################################################
-### FOR Kọ́lá Túbọ̀sún interiews: 4001 lines => 80/10/10 split => train/dev/test => 3201/400/400
+# ###############################################################################################################
+# ### FOR BibeliYoruba_corpus: 45713 lines => 80/10/10 split => train/dev/test => 36570/4570/4570
+# echo "" 
+# echo "Using [BibeliYoruba] SOURCE FILE TRAIN=${SOURCE_FILE_TRAIN}"
+# head -n 36570 "${SOURCE_BASE_DIR}/Bibeli_Mimo/biblica.txt" >>  ${SOURCE_FILE_TRAIN}
 
-SOURCE_BASE_DIR="${BASE_DIR}/../yoruba-text-reserve"
-echo ""
-echo "Changing to use SOURCE_TEXT_BASE_DIR=${SOURCE_BASE_DIR}"
+# echo "Using [BibeliYoruba] SOURCE FILE TRAIN=${SOURCE_FILE_DEV}"
+# tail -n 9143 "${SOURCE_BASE_DIR}/Bibeli_Mimo/biblica.txt" | head -n 4571  >> ${SOURCE_FILE_DEV}
 
-### Check if text-reserve exists, which it will for users with permission ###
-if [ -d "${SOURCE_BASE_DIR}" ]
-then
-    echo "Using [Kọ́lá Túbọ̀sún interviews] SOURCE FILE TRAIN=${SOURCE_FILE_TRAIN}"
-    head -n 3201 "${SOURCE_BASE_DIR}/Kola_Tubosun/Interviews/kola_corpus.txt" >>  ${SOURCE_FILE_TRAIN}
+# echo "Using [BibeliYoruba] SOURCE FILE TRAIN=${SOURCE_FILE_TEST}"
+# tail -n 9143 "${SOURCE_BASE_DIR}/Bibeli_Mimo/biblica.txt" | tail -n 4571  >> ${SOURCE_FILE_TEST}
+# echo "" >> ${SOURCE_FILE_TEST}
 
-    echo "Using [Kọ́lá Túbọ̀sún interviews] SOURCE FILE TRAIN=${SOURCE_FILE_DEV}"
-    tail -n 800 "${SOURCE_BASE_DIR}/Kola_Tubosun/Interviews/kola_corpus.txt" | head -n 400  >> ${SOURCE_FILE_DEV}
 
-    echo "Using [Kọ́lá Túbọ̀sún interviews] SOURCE FILE TRAIN=${SOURCE_FILE_TEST}"
-    tail -n 800 "${SOURCE_BASE_DIR}/Kola_Tubosun/Interviews/kola_corpus.txt" | tail -n 400  >> ${SOURCE_FILE_TEST}
-    echo "" >> ${SOURCE_FILE_TEST}
-fi
+# ###############################################################################################################
+# ### FOR Iroyin (news): 1738 lines => 80/10/10 split => train/dev/test => 1371/171/171
+# # echo "" 
+# # echo "Using [Iroyin] SOURCE FILE TRAIN=${SOURCE_FILE_TRAIN}"
+# # head -n 1371 "${SOURCE_BASE_DIR}/Iroyin/news_sites.txt" >>  ${SOURCE_FILE_TRAIN}
+# # 
+# # echo "Using [Iroyin] SOURCE FILE TRAIN=${SOURCE_FILE_DEV}"
+# # tail -n 342 "${SOURCE_BASE_DIR}/Iroyin/news_sites.txt" | head -n 171  >> ${SOURCE_FILE_DEV}
+# # 
+# # echo "Using [Iroyin] SOURCE FILE TRAIN=${SOURCE_FILE_TEST}"
+# # tail -n 342 "${SOURCE_BASE_DIR}/Iroyin/news_sites.txt" | tail -n 171  >> ${SOURCE_FILE_TEST}
+# # echo "" >> ${SOURCE_FILE_TEST}
+
+
+# ############################################################################################################
+# ### FOR https://github.com/Toluwase/Word-Level-Language-Identification-for-Resource-Scarce-
+# ### A corpus for word-level language id research:  5324 lines => 80/10/10 => train/dev/test => 4258/533/533
+
+# SOURCE_BASE_DIR="${BASE_DIR}/../Word-Level-Language-Identification-for-Resource-Scarce-"
+# echo ""
+# echo "Changing to use SOURCE_TEXT_BASE_DIR=${SOURCE_BASE_DIR}"
+
+# ### Check if this repo exists, git clone it if it doesn't, for now assume it does ###
+# if [ -d "${SOURCE_BASE_DIR}" ]
+# then
+#     # cat this repo's {training, test} files together {Yoruba_training_corpus(part).txt, EngYor_test_corpus.txt}
+#     cat "${SOURCE_BASE_DIR}/Yoruba_training_corpus(part).txt" "${SOURCE_BASE_DIR}/EngYor_test_corpus.txt" > "${SOURCE_BASE_DIR}/combined_corpus.txt"
+
+#     echo "Using [Tolúwaṣẹ word-level langid] SOURCE FILE TRAIN=${SOURCE_FILE_TRAIN}"
+#     head -n 4258 "${SOURCE_BASE_DIR}/combined_corpus.txt" >>  ${SOURCE_FILE_TRAIN}
+
+#     echo "Using [Tolúwaṣẹ word-level langid] SOURCE FILE TRAIN=${SOURCE_FILE_DEV}"
+#     tail -n 1066 "${SOURCE_BASE_DIR}/combined_corpus.txt" | head -n 533  >> ${SOURCE_FILE_DEV}
+
+#     echo "Using [Tolúwaṣẹ word-level langid] SOURCE FILE TRAIN=${SOURCE_FILE_TEST}"
+#     tail -n 1066 "${SOURCE_BASE_DIR}/combined_corpus.txt" | tail -n 533  >> ${SOURCE_FILE_TEST}
+#     echo "" >> ${SOURCE_FILE_TEST}
+#     echo "Removing Tempfile ${SOURCE_BASE_DIR}/Yoruba_training_corpus(part).txt"
+# fi
+
+
+# ############################################################################################################
+# ### FOR Kọ́lá Túbọ̀sún interiews: 4001 lines => 80/10/10 split => train/dev/test => 3201/400/400
+
+# SOURCE_BASE_DIR="${BASE_DIR}/../yoruba-text-reserve"
+# echo ""
+# echo "Changing to use SOURCE_TEXT_BASE_DIR=${SOURCE_BASE_DIR}"
+
+# ### Check if text-reserve exists, which it will for users with permission ###
+# if [ -d "${SOURCE_BASE_DIR}" ]
+# then
+#     echo "Using [Kọ́lá Túbọ̀sún interviews] SOURCE FILE TRAIN=${SOURCE_FILE_TRAIN}"
+#     head -n 3201 "${SOURCE_BASE_DIR}/Kola_Tubosun/Interviews/kola_corpus.txt" >>  ${SOURCE_FILE_TRAIN}
+
+#     echo "Using [Kọ́lá Túbọ̀sún interviews] SOURCE FILE TRAIN=${SOURCE_FILE_DEV}"
+#     tail -n 800 "${SOURCE_BASE_DIR}/Kola_Tubosun/Interviews/kola_corpus.txt" | head -n 400  >> ${SOURCE_FILE_DEV}
+
+#     echo "Using [Kọ́lá Túbọ̀sún interviews] SOURCE FILE TRAIN=${SOURCE_FILE_TEST}"
+#     tail -n 800 "${SOURCE_BASE_DIR}/Kola_Tubosun/Interviews/kola_corpus.txt" | tail -n 400  >> ${SOURCE_FILE_TEST}
+#     echo "" >> ${SOURCE_FILE_TEST}
+# fi
 
 
 ############################################################################################################
 # Verify split sums are sane: 43330/5415/5417
+# NUMBERS WILL BE DIFFERENT FOR THESIS
 cat ${SOURCE_FILE_TRAIN} | wc -l
 cat ${SOURCE_FILE_DEV}   | wc -l 
 cat ${SOURCE_FILE_TEST}  | wc -l
@@ -160,14 +200,20 @@ echo "[INFO] make parallel text dataset for yoruba diacritics restoration"
 ${BASE_DIR}/src/make_parallel_text.py --source_file ${SOURCE_FILE_TRAIN} \
   --max_len 40 --output_dir ${OUTPUT_DIR_TRAIN}
 
-${BASE_DIR}/src/make_parallel_text.py --source_file ${SOURCE_FILE_DEV} \
-  --max_len 40 --output_dir ${OUTPUT_DIR_DEV}
+# ${BASE_DIR}/src/make_parallel_text.py --source_file ${SOURCE_FILE_DEV} \
+#   --max_len 40 --output_dir ${OUTPUT_DIR_DEV}
 
 ${BASE_DIR}/src/make_parallel_text.py --source_file ${SOURCE_FILE_TEST} \
   --max_len 40 --output_dir ${OUTPUT_DIR_TEST}
 
 # clean up intermediates, to leave only final parallel text {sources.txt, targets.txt}
-rm ${SOURCE_FILE_TRAIN} ${SOURCE_FILE_DEV} ${SOURCE_FILE_TEST} 
+rm ${SOURCE_FILE_TRAIN} 
+# rm ${SOURCE_FILE_DEV} 
+rm ${SOURCE_FILE_TEST} 
+
+###############################################################################################################
+# MIGHT WANT TO RUN BELOW FOR THESIS
+###############################################################################################################
 
 # # Create Vocabulary
 # ${BASE_DIR}/bin/tools/generate_vocab.py  < ${OUTPUT_DIR_TRAIN}/sources.txt  > ${OUTPUT_DIR_TRAIN}/vocab.sources.txt
