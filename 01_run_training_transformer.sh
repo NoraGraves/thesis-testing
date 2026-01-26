@@ -1,19 +1,20 @@
-#!/usr/bin/env bash
-#
-#echo "[INFO] aggregate sources from yoruba-text, split & strip to make parallel text"
-#./scripts/aggregate_corpora_make_parallel_text.sh
-#
-#
-#echo "[INFO] remove old tensorboard runs, and preprocessed files"
-#rm data/*.pt
-#rm -rf runs/*
-#
-#echo "[INFO] preprocess training data"
-#python3 ./src/preprocess.py -train_src ./data/train/sources.txt \
-#                        -train_tgt ./data/train/targets.txt \
-#                        -valid_src ./data/dev/sources.txt \
-#                        -valid_tgt ./data/dev/targets.txt \
-#                        -save_data ./data/demo
+!/usr/bin/env bash
+
+echo "[INFO] aggregate sources from yoruba-text, split & strip to make parallel text"
+./scripts/aggregate_corpora_make_parallel_text.sh
+
+
+echo "[INFO] remove old tensorboard runs, and preprocessed files"
+rm data/*.pt
+# don't delete previous runs
+# rm -rf runs/*
+
+echo "[INFO] preprocess training data"
+python3 ./src/preprocess.py -train_src ./data/train/sources.txt \
+                       -train_tgt ./data/train/targets.txt \
+                       -valid_src ./data/dev/sources.txt \
+                       -valid_tgt ./data/dev/targets.txt \
+                       -save_data ./data/demo
 
 echo "[INFO] running Transformer (self-attention) training, for GPU training add: -gpuid 0 "
 # python3 ./src/train.py -gpuid 0 \

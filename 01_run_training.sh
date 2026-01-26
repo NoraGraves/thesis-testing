@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo "[INFO] aggregate sources from yoruba-text, split & strip to make parallel text"
-python3 ./src/aggregate_corpora_make_parallel_text.py
+./scripts/aggregate_corpora_make_parallel_text.sh
 
 if [ $? -eq 0 ]; then
     echo "OKAY"
@@ -24,8 +24,8 @@ python3 ./src/preprocess.py -train_src ./data/train/sources.txt \
                         -save_data ./data/demo
 
 echo "[INFO] running Bahdanau seq2seq training, for GPU training add: -gpuid 0 "
-# python3 ./src/train.py -world_size 1 -gpu_ranks 0 \
-python3 ./src/train.py \
+# python3 ./src/train.py \
+python3 ./src/train.py -world_size 1 -gpu_ranks 0 \
     -data data/demo \
     -save_model models/yo_adr_bahdanau_lstm_128_2_2_sans_yoglobalvoices_all_in_take2 \
     -save_checkpoint_steps 500 \

@@ -45,33 +45,42 @@ SOURCE_FILE_TEST="${OUTPUT_DIR_TEST}/test.txt"
 ###############################################################################################################
 
 ###############################################################################################################
-### FOR IroyinSpeechCorpus: 4315 lines => 90/0/10 split => train/dev/test => 7979/0/887
+### FOR IroyinSpeechCorpus: 8865 lines => 80/10/10 split => train/dev/test => 2541/887/887
 echo ""
 echo "Using [IroyinSpeechCorpus] SOURCE FILE TRAIN=${SOURCE_FILE_TRAIN}"
-head -n 3452 "${SOURCE_BASE_DIR}/thesis/IroyinSpeechCorpus.txt" >>  ${SOURCE_FILE_TRAIN}
+head -n 7091 "${SOURCE_BASE_DIR}/thesis/IroyinSpeechCorpus.txt" >>  ${SOURCE_FILE_TRAIN}
+
+echo "Using [IroyinSpeechCorpus] SOURCE FILE TRAIN=${SOURCE_FILE_DEV}"
+tail -n 1774 "${SOURCE_BASE_DIR}/thesis/IroyinSpeechCorpus.txt" | head -n 887  >> ${SOURCE_FILE_DEV}
 
 echo "Using [IroyinSpeechCorpus] SOURCE FILE TRAIN=${SOURCE_FILE_TEST}"
-tail -n 887 "${SOURCE_BASE_DIR}/thesis/IroyinSpeechCorpus.txt" | tail -n 887  >> ${SOURCE_FILE_TEST}
+tail -n 1774 "${SOURCE_BASE_DIR}/thesis/IroyinSpeechCorpus.txt" | tail -n 887  >> ${SOURCE_FILE_TEST}
 echo "" >> ${SOURCE_FILE_TEST}
 
 ###############################################################################################################
-### FOR MultiDiacCorpus: 599 lines => 90/0/10 split => train/dev/test => 539/0/60
+### FOR MultiDiacCorpus: 598 lines => 80/10/10 split => train/dev/test => 478/60/60
 echo ""
 echo "Using [MultiDiacCorpus] SOURCE FILE TRAIN=${SOURCE_FILE_TRAIN}"
-head -n 539 "${SOURCE_BASE_DIR}/thesis/MultiDiacCorpus.txt" >>  ${SOURCE_FILE_TRAIN}
+head -n 478 "${SOURCE_BASE_DIR}/thesis/MultiDiacCorpus.txt" >>  ${SOURCE_FILE_TRAIN}
+
+echo "Using [MultiDiacCorpus] SOURCE FILE TRAIN=${SOURCE_FILE_DEV}"
+tail -n 120 "${SOURCE_BASE_DIR}/thesis/MultiDiacCorpus.txt" | head -n 60  >> ${SOURCE_FILE_DEV}
 
 echo "Using [MultiDiacCorpus] SOURCE FILE TRAIN=${SOURCE_FILE_TEST}"
-tail -n 60 "${SOURCE_BASE_DIR}/thesis/MultiDiacCorpus.txt" | tail -n 60  >> ${SOURCE_FILE_TEST}
+tail -n 120 "${SOURCE_BASE_DIR}/thesis/MultiDiacCorpus.txt" | tail -n 60  >> ${SOURCE_FILE_TEST}
 echo "" >> ${SOURCE_FILE_TEST}
 
 ###############################################################################################################
-### FOR YADCorpus: 16195 lines => 90/0/10 split => train/dev/test => 14575/0/1620
+### FOR YADCorpus: 16194 lines => 80/10/10 split => train/dev/test => 14575/1620/1620
 echo ""
 echo "Using [YADCorpus] SOURCE FILE TRAIN=${SOURCE_FILE_TRAIN}"
-head -n 14575 "${SOURCE_BASE_DIR}/thesis/YADCorpus.txt" >>  ${SOURCE_FILE_TRAIN}
+head -n 12954 "${SOURCE_BASE_DIR}/thesis/YADCorpus.txt" >>  ${SOURCE_FILE_TRAIN}
+
+echo "Using [YADCorpus] SOURCE FILE TRAIN=${SOURCE_FILE_DEV}"
+tail -n 3240 "${SOURCE_BASE_DIR}/thesis/YADCorpus.txt" | head -n 1620  >> ${SOURCE_FILE_DEV}
 
 echo "Using [YADCorpus] SOURCE FILE TRAIN=${SOURCE_FILE_TEST}"
-tail -n 1620 "${SOURCE_BASE_DIR}/thesis/YADCorpus.txt" | tail -n 1620  >> ${SOURCE_FILE_TEST}
+tail -n 3240 "${SOURCE_BASE_DIR}/thesis/YADCorpus.txt" | tail -n 1620  >> ${SOURCE_FILE_TEST}
 echo "" >> ${SOURCE_FILE_TEST}
 
 
@@ -200,8 +209,8 @@ echo "[INFO] make parallel text dataset for yoruba diacritics restoration"
 ${BASE_DIR}/src/make_parallel_text.py --source_file ${SOURCE_FILE_TRAIN} \
   --max_len 40 --output_dir ${OUTPUT_DIR_TRAIN}
 
-# ${BASE_DIR}/src/make_parallel_text.py --source_file ${SOURCE_FILE_DEV} \
-#   --max_len 40 --output_dir ${OUTPUT_DIR_DEV}
+${BASE_DIR}/src/make_parallel_text.py --source_file ${SOURCE_FILE_DEV} \
+  --max_len 40 --output_dir ${OUTPUT_DIR_DEV}
 
 ${BASE_DIR}/src/make_parallel_text.py --source_file ${SOURCE_FILE_TEST} \
   --max_len 40 --output_dir ${OUTPUT_DIR_TEST}

@@ -14,12 +14,16 @@ COPY ./yoruba-adr/requirements.txt ./
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
+RUN python -m nltk.downloader punkt_tab
 
 # Copy yoruba-adr
-COPY . ./yoruba-adr
+COPY ./yoruba-adr ./yoruba-adr
 
 # Copy yoruba-text (but only the thesis part)
-COPY . ./yoruba-text-thesis
+COPY ./yoruba-text ./yoruba-text
+
+# cd into yoruba-adr
+WORKDIR ./yoruba-adr
 
 # Command to run with 'docker run' command
 CMD ["bash", "./yoruba-adr/01_run_training.sh"]

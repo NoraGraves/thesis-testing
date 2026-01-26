@@ -20,9 +20,10 @@ Need to use Docker because the torch version is not available on my computer
     * `docker-compose up` creates container and runs default `CMD`
     * `docker-compose run app bash` interactive shell
     * `docker-compose run app python test.py` run a specific command like `python test.py`
-    * `docker-compose down` stop running containers
+    * `docker-compose down` stop running containers and remove them
     * `docker-compose logs` view logs
     * `docker-compose up --build` rebuild container
+    * 
 
 Every time you change `Dockerfile` or any of your project files, you must re-build (but it'll cache things automatically)
 
