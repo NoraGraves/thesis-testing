@@ -206,13 +206,13 @@ cat ${SOURCE_FILE_TEST}  | wc -l
 echo "[INFO] make parallel text dataset for yoruba diacritics restoration"
 
 # Write train, dev and test data
-${BASE_DIR}/src/make_parallel_text.py --source_file ${SOURCE_FILE_TRAIN} \
+python3 ${BASE_DIR}/src/make_parallel_text.py --source_file ${SOURCE_FILE_TRAIN} \
   --max_len 40 --output_dir ${OUTPUT_DIR_TRAIN}
 
-${BASE_DIR}/src/make_parallel_text.py --source_file ${SOURCE_FILE_DEV} \
+python3 ${BASE_DIR}/src/make_parallel_text.py --source_file ${SOURCE_FILE_DEV} \
   --max_len 40 --output_dir ${OUTPUT_DIR_DEV}
 
-${BASE_DIR}/src/make_parallel_text.py --source_file ${SOURCE_FILE_TEST} \
+python3 ${BASE_DIR}/src/make_parallel_text.py --source_file ${SOURCE_FILE_TEST} \
   --max_len 40 --output_dir ${OUTPUT_DIR_TEST}
 
 # clean up intermediates, to leave only final parallel text {sources.txt, targets.txt}

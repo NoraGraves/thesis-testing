@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo "[INFO] aggregate sources from yoruba-text, split & strip to make parallel text"
-./scripts/aggregate_corpora_make_parallel_text.sh
+bash scripts/aggregate_corpora_make_parallel_text.sh
 
 if [ $? -eq 0 ]; then
     echo "OKAY"

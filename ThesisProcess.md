@@ -34,3 +34,14 @@ Need to use my own training and testing sets
 3. Copy my new data to Docker too
 4. Train my own model!
 5. Repeat with only subsets of the data
+
+# Testing Setup
+1. Create conda environment:
+```module load anaconda3/2022.5
+conda create -n yoruba-adr python=3.8 -y
+conda activate yoruba-adr
+pip install -r requirements.txt
+python -m nltk.downloader punkt_tab
+```
+2. Create `job.slurm` and submit
+3. 
