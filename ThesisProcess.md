@@ -35,7 +35,7 @@ Need to use my own training and testing sets
 4. Train my own model!
 5. Repeat with only subsets of the data
 
-# Testing Setup
+# Training and Testing Setup
 1. Create conda environment:
 ```module load anaconda3/2022.5
 conda create -n yoruba-adr python=3.8 -y

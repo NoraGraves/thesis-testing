@@ -125,7 +125,7 @@ class Translator(object):
             phrase_table="",
             data_type="text",
             verbose=False,
-            report_bleu=True,
+            report_bleu=False, # MARK FALSE
             report_rouge=False,
             report_time=False,
             copy_attn=False,
@@ -270,10 +270,11 @@ class Translator(object):
             seed=opt.seed)
 
     def _log(self, msg):
-        if self.logger:
-            self.logger.info(msg)
-        else:
-            print(msg)
+        # if self.logger:
+        #     self.logger.info(msg)
+        # else:
+        #     print(msg)
+        print(msg)
 
     def _gold_score(self, batch, memory_bank, src_lengths, src_vocabs,
                     use_src_map, enc_states, batch_size, src):
@@ -376,65 +377,65 @@ class Translator(object):
                     gold_score_total += trans.gold_score
                     gold_words_total += len(trans.gold_sent) + 1
 
-                    # ##################################################################
-                    # # IOHAVOC - compute accuracy
-                    # #                                  data_iter.batches[batch][trans_i].tgt[0]
-                    # # target_sentence = trans.gold_sent  # data_iter.batches[0][0].tgt[0]   ### <<----- this only works for once
-                    # # target_sentence = data_iter.batches[batch_index][trans_index].tgt[0]
-                    # target_sentence = trans.gold_sent
-                    # total_num_utts += 1
-                    #
-                    # # if "<unk>" in target_sentence:
-                    # #     self._log("<UNK> in target_sentence .. skipping")
-                    # #     skipped += 1
-                    # #     continue
-                    #
-                    # # by summing here you count UNKS, when you want to discount unks
-                    # # if True:  # style 2
-                    # #     stopwords = ['<unk>']
-                    # #     target_sentence_for_not_counting_unks = [word for word in trans.gold_sent if word not in stopwords]
-                    # #     total_num_words += len(target_sentence_for_not_counting_unks)
-                    # # else:  # style 1
-                    #
-                    # assert(len(trans.pred_sents) == 1)
-                    # n_best_preds = trans.pred_sents[0]
-                    #
-                    # if len(target_sentence) != len(n_best_preds): # make sure we predicted the same num words
-                    #     # IOHAVOC FEB9 EVAL
-                    #     self._log("ERROR why??? ")
-                    #     if "<unk>" in target_sentence:
-                    #         self._log("<UNK> in PHRASE, test set vocab mismatch is messing up predictions")
-                    #     elif len(target_sentence) > 0 and len(n_best_preds) > 0:
-                    #         self._log("UNEVEN LENGTHS => " + str(target_sentence) + " + =>" + str(n_best_preds))
-                    #     else:
-                    #         self._log("ANOTHER REASON")
+                    ##################################################################
+                    # IOHAVOC - compute accuracy
+                    #                                  data_iter.batches[batch][trans_i].tgt[0]
+                    # target_sentence = trans.gold_sent  # data_iter.batches[0][0].tgt[0]   ### <<----- this only works for once
+                    # target_sentence = data_iter.batches[batch_index][trans_index].tgt[0]
+                    target_sentence = trans.gold_sent
+                    total_num_utts += 1
+                    
+                    # if "<unk>" in target_sentence:
+                    #     self._log("<UNK> in target_sentence .. skipping")
                     #     skipped += 1
                     #     continue
+                    
+                    # by summing here you count UNKS, when you want to discount unks
+                    # if True:  # style 2
+                    #     stopwords = ['<unk>']
+                    #     target_sentence_for_not_counting_unks = [word for word in trans.gold_sent if word not in stopwords]
+                    #     total_num_words += len(target_sentence_for_not_counting_unks)
+                    # else:  # style 1
+                    
+                    assert(len(trans.pred_sents) == 1)
+                    n_best_preds = trans.pred_sents[0]
+                    
+                    if len(target_sentence) != len(n_best_preds): # make sure we predicted the same num words
+                        # IOHAVOC FEB9 EVAL
+                        self._log("ERROR why??? ")
+                        if "<unk>" in target_sentence:
+                            self._log("<UNK> in PHRASE, test set vocab mismatch is messing up predictions")
+                        elif len(target_sentence) > 0 and len(n_best_preds) > 0:
+                            self._log("UNEVEN LENGTHS => " + str(target_sentence) + " + =>" + str(n_best_preds))
+                        else:
+                            self._log("ANOTHER REASON")
+                        skipped += 1
+                        continue
+                    
+                    current_trans_correct = 0
+                    for i in range(len(target_sentence)):
+                        if target_sentence[i] == "<unk>":
+                            continue
+                        if target_sentence[i] == n_best_preds[i]:
+                            total_correct_words += 1
+                            current_trans_correct += 1
+                        else:
+                            if False: # IOHAVOC FEB9 EVAL
+                                print("error words: " + target_sentence[i] + " " + n_best_preds[i])
+                    
+                    total_num_words += len(target_sentence)
+                    
+                    # IOHAVOC FEB9 EVAL
                     #
-                    # current_trans_correct = 0
-                    # for i in range(len(target_sentence)):
-                    #     if target_sentence[i] == "<unk>":
-                    #         continue
-                    #     if target_sentence[i] == n_best_preds[i]:
-                    #         total_correct_words += 1
-                    #         current_trans_correct += 1
-                    #     else:
-                    #         if False: # IOHAVOC FEB9 EVAL
-                    #             print("error words: " + target_sentence[i] + " " + n_best_preds[i])
-                    #
-                    # total_num_words += len(target_sentence)
-                    #
-                    # # IOHAVOC FEB9 EVAL
-                    # #
-                    # # self._log("")
-                    # # self._log("")
-                    # # self._log("-----------------------------------")
-                    # # self._log("num_correct_words: " + str(current_trans_correct))
-                    # # # self._log("num_words: " + str(len(target_sentence_for_not_counting_unks)))
-                    # # self._log("num_words: " + str(len(target_sentence)))
-                    # # # self._log("num_words: " + str(len(trans.gold_sent)))
-                    #
-                    # ##################################################################
+                    # self._log("")
+                    # self._log("")
+                    # self._log("-----------------------------------")
+                    # self._log("num_correct_words: " + str(current_trans_correct))
+                    # # self._log("num_words: " + str(len(target_sentence_for_not_counting_unks)))
+                    # self._log("num_words: " + str(len(target_sentence)))
+                    # # self._log("num_words: " + str(len(trans.gold_sent)))
+                    
+                    ##################################################################
 
                 n_best_preds = [" ".join(pred)
                                 for pred in trans.pred_sents[:self.n_best]]
@@ -507,11 +508,12 @@ class Translator(object):
             msg = self._report_score('PRED', pred_score_total, pred_words_total)
             self._log(msg)
 
+            if tgt is None: self._log('TGT IS NONE ??')
             if tgt is not None:
                 # GOLD SCORE IS ANNOYING
-                # msg = self._report_score('GOLD', gold_score_total, gold_words_total)
-                # self._log(msg)
-                self.report_bleu = True
+                msg = self._report_score('GOLD', gold_score_total, gold_words_total)
+                self._log(msg)
+                # self.report_bleu = True
                 if self.report_bleu:
                     msg = self._report_bleu(tgt)
                     self._log(msg)

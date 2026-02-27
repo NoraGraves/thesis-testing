@@ -1,26 +1,32 @@
-!/usr/bin/env bash
+#!/usr/bin/env bash
 
 echo "[INFO] aggregate sources from yoruba-text, split & strip to make parallel text"
-./scripts/aggregate_corpora_make_parallel_text.sh
+bash scripts/aggregate_corpora_make_parallel_text.sh
 
+
+if [ $? -eq 0 ]; then
+    echo "OKAY"
+else
+    echo "TRAINING PREPROCESSING FAIL"
+    exit 1
+fi
 
 echo "[INFO] remove old tensorboard runs, and preprocessed files"
 rm data/*.pt
-# don't delete previous runs
-# rm -rf runs/*
 
 echo "[INFO] preprocess training data"
 python3 ./src/preprocess.py -train_src ./data/train/sources.txt \
-                       -train_tgt ./data/train/targets.txt \
-                       -valid_src ./data/dev/sources.txt \
-                       -valid_tgt ./data/dev/targets.txt \
-                       -save_data ./data/demo
+                        -train_tgt ./data/train/targets.txt \
+                        -valid_src ./data/dev/sources.txt \
+                        -valid_tgt ./data/dev/targets.txt \
+                        -save_data ./data/demo
+
 
 echo "[INFO] running Transformer (self-attention) training, for GPU training add: -gpuid 0 "
 # python3 ./src/train.py -gpuid 0 \
-python3 ./src/train.py \
+python3 ./src/train.py -world_size 1 -gpu_ranks 0\
     -data data/demo \
-    -save_model models/yo_adr_transformer_sans_yoglobalvoices_all_in \
+    -save_model models/yo_adr_iroyin_multi_yad \
     -save_checkpoint_steps 500 \
     -tensorboard  \
     -layers 6 -rnn_size 512 -word_vec_size 512 -transformer_ff 2048 -heads 8  \

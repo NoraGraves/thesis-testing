@@ -169,6 +169,7 @@
 # Processing /Users/iroro/github/yoruba-adr/models/yo_adr_bahdanau_lstm_128_2_2_sans_yoglobalvoices_all_in_take3_feb9_fasttext_EC2_step_93500.pt file...
 # Accuracy (%): 71.10906645905585
 
+FILES=/scratch/network/eg5817/thesis-testing/yoruba-adr/models/yo_adr_bahdanau_lstm_128_2_2_sans_yoglobalvoices_all_in_take2_step_100000.pt
 
 for f in $FILES
 do
