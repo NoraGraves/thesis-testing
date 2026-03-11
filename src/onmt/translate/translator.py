@@ -410,6 +410,9 @@ class Translator(object):
                         else:
                             self._log("ANOTHER REASON")
                         skipped += 1
+                        early_pred = [" ".join(pred) for pred in trans.pred_sents[:self.n_best]]
+                        self.out_file.write('\n'.join(early_pred) + '\n')
+                        self.out_file.flush()
                         continue
                     
                     current_trans_correct = 0

@@ -45,16 +45,16 @@ SOURCE_FILE_TEST="${OUTPUT_DIR_TEST}/test.txt"
 ###############################################################################################################
 
 ###############################################################################################################
-### FOR IroyinSpeechCorpus: 8865 lines => 80/10/10 split => train/dev/test => 2541/887/887
+### FOR IroyinSpeechCorpus: 26688 lines => 80/10/10 split => train/dev/test => 21350/2669/2669
 echo ""
 echo "Using [IroyinSpeechCorpus] SOURCE FILE TRAIN=${SOURCE_FILE_TRAIN}"
-head -n 7091 "${SOURCE_BASE_DIR}/thesis/IroyinSpeechCorpus.txt" >>  ${SOURCE_FILE_TRAIN}
+head -n 21350 "${SOURCE_BASE_DIR}/thesis/IroyinSpeechCorpus.txt" >>  ${SOURCE_FILE_TRAIN}
 
 echo "Using [IroyinSpeechCorpus] SOURCE FILE TRAIN=${SOURCE_FILE_DEV}"
-tail -n 1774 "${SOURCE_BASE_DIR}/thesis/IroyinSpeechCorpus.txt" | head -n 887  >> ${SOURCE_FILE_DEV}
+tail -n 5338 "${SOURCE_BASE_DIR}/thesis/IroyinSpeechCorpus.txt" | head -n 2669  >> ${SOURCE_FILE_DEV}
 
 echo "Using [IroyinSpeechCorpus] SOURCE FILE TRAIN=${SOURCE_FILE_TEST}"
-tail -n 1774 "${SOURCE_BASE_DIR}/thesis/IroyinSpeechCorpus.txt" | tail -n 887  >> ${SOURCE_FILE_TEST}
+tail -n 5338 "${SOURCE_BASE_DIR}/thesis/IroyinSpeechCorpus.txt" | tail -n 2669  >> ${SOURCE_FILE_TEST}
 echo "" >> ${SOURCE_FILE_TEST}
 
 ###############################################################################################################
