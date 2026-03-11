@@ -3,5 +3,7 @@ data/*.pt
 *-venv/
 **/__pycache__
 models/*.pt
-data/eval.ipynb
+data/eval*.ipynb
 data/*.csv
+THESIS/
+data/folds
