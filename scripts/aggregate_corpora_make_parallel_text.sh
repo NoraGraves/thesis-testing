@@ -43,12 +43,12 @@ SOURCE_FILE_TEST="${OUTPUT_DIR_TEST}/test.txt"
 ###############################################################################################################
 # ADDED FOR THESIS
 ###############################################################################################################
-
+# NOTE: I don't need validation for this, so val can come out of training!
 ###############################################################################################################
-### FOR IroyinSpeechCorpus: 26688 lines => 80/10/10 split => train/dev/test => 21350/2669/2669
+### FOR IroyinSpeechCorpus: 26688 lines => 90/0/10 split => train/dev/test => 24019/0/2669
 echo ""
 echo "Using [IroyinSpeechCorpus] SOURCE FILE TRAIN=${SOURCE_FILE_TRAIN}"
-head -n 21350 "${SOURCE_BASE_DIR}/thesis/IroyinSpeechCorpus.txt" >>  ${SOURCE_FILE_TRAIN}
+head -n 24019 "${SOURCE_BASE_DIR}/thesis/IroyinSpeechCorpus.txt" >>  ${SOURCE_FILE_TRAIN}
 
 echo "Using [IroyinSpeechCorpus] SOURCE FILE TRAIN=${SOURCE_FILE_DEV}"
 tail -n 5338 "${SOURCE_BASE_DIR}/thesis/IroyinSpeechCorpus.txt" | head -n 2669  >> ${SOURCE_FILE_DEV}
@@ -58,10 +58,10 @@ tail -n 5338 "${SOURCE_BASE_DIR}/thesis/IroyinSpeechCorpus.txt" | tail -n 2669  
 echo "" >> ${SOURCE_FILE_TEST}
 
 ###############################################################################################################
-### FOR MultiDiacCorpus: 598 lines => 80/10/10 split => train/dev/test => 478/60/60
+### FOR MultiDiacCorpus: 598 lines => 90/0/10 split => train/dev/test => 538/0/60
 echo ""
 echo "Using [MultiDiacCorpus] SOURCE FILE TRAIN=${SOURCE_FILE_TRAIN}"
-head -n 478 "${SOURCE_BASE_DIR}/thesis/MultiDiacCorpus.txt" >>  ${SOURCE_FILE_TRAIN}
+head -n 538 "${SOURCE_BASE_DIR}/thesis/MultiDiacCorpus.txt" >>  ${SOURCE_FILE_TRAIN}
 
 echo "Using [MultiDiacCorpus] SOURCE FILE TRAIN=${SOURCE_FILE_DEV}"
 tail -n 120 "${SOURCE_BASE_DIR}/thesis/MultiDiacCorpus.txt" | head -n 60  >> ${SOURCE_FILE_DEV}
@@ -71,10 +71,10 @@ tail -n 120 "${SOURCE_BASE_DIR}/thesis/MultiDiacCorpus.txt" | tail -n 60  >> ${S
 echo "" >> ${SOURCE_FILE_TEST}
 
 ###############################################################################################################
-### FOR YADCorpus: 16194 lines => 80/10/10 split => train/dev/test => 14575/1620/1620
+### FOR YADCorpus: 16194 lines => 80/10/10 split => train/dev/test => 16195/1620/1620
 echo ""
 echo "Using [YADCorpus] SOURCE FILE TRAIN=${SOURCE_FILE_TRAIN}"
-head -n 12954 "${SOURCE_BASE_DIR}/thesis/YADCorpus.txt" >>  ${SOURCE_FILE_TRAIN}
+head -n 14574 "${SOURCE_BASE_DIR}/thesis/YADCorpus.txt" >>  ${SOURCE_FILE_TRAIN}
 
 echo "Using [YADCorpus] SOURCE FILE TRAIN=${SOURCE_FILE_DEV}"
 tail -n 3240 "${SOURCE_BASE_DIR}/thesis/YADCorpus.txt" | head -n 1620  >> ${SOURCE_FILE_DEV}
